@@ -1,6 +1,14 @@
 
 @import 'mixins';
 
+// font for css
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+//Varibles
+$color-brown: #bc6c25;
+$color-white: #f2f7f2;
+$color-black: #08090a;
+
 * {
   margin: 0;
   padding: 0;
@@ -36,10 +44,168 @@ html {
 body {
   box-sizing: border-box;
   position: relative;
+  font-family: "Poppins", sans-serif;
 }
 
 .wrapper {
   position: absolute;
-  width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-image: repeating-radial-gradient(
+      circle at center center,
+      transparent 0px,
+      transparent 13px,
+      rgba($color-white, 0.050980392156862744) 13px,
+      rgba($color-white, 0.050980392156862744) 26px,
+      transparent 26px,
+      transparent 27px,
+      rgba($color-white, 0.050980392156862744) 27px,
+      rgba($color-white, 0.050980392156862744) 32px,
+      transparent 32px,
+      transparent 34px,
+      rgba($color-white, 0.050980392156862744) 34px,
+      rgba($color-white, 0.050980392156862744) 36px
+    ),
+    repeating-radial-gradient(
+      circle at center center,
+      $color-black 0px,
+      $color-black 1px,
+      $color-black 1px,
+      $color-black 13px,
+      $color-black 13px,
+      $color-black 24px,
+      $color-black 24px,
+      $color-black 37px,
+      $color-black 37px,
+      $color-black 44px,
+      $color-black 44px,
+      $color-black 48px
+    );
+  background-size: 88px 88px;
+}
+
+h1 {
+  text-align: center;
+  margin:2.5rem 0;
+  font-size: 4rem;
+  letter-spacing: 2rem;
+  color: $color-white;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  @include respond(phone-prot) {
+    //0px to 400px max-width(28.125em)
+    letter-spacing: 1.5rem;
+    font-size: 3rem;
+  }
+}
+
+// loader
+
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: repeating-radial-gradient(
+      circle at center center,
+      transparent 0px,
+      transparent 13px,
+      rgba($color-white, 0.050980392156862744) 13px,
+      rgba($color-white, 0.050980392156862744) 26px,
+      transparent 26px,
+      transparent 27px,
+      rgba($color-white, 0.050980392156862744) 27px,
+      rgba($color-white, 0.050980392156862744) 32px,
+      transparent 32px,
+      transparent 34px,
+      rgba($color-white, 0.050980392156862744) 34px,
+      rgba($color-white, 0.050980392156862744) 36px
+    ),
+    repeating-radial-gradient(
+      circle at center center,
+      $color-black 0px,
+      $color-black 1px,
+      $color-black 1px,
+      $color-black 13px,
+      $color-black 13px,
+      $color-black 24px,
+      $color-black 24px,
+      $color-black 37px,
+      $color-black 37px,
+      $color-black 44px,
+      $color-black 44px,
+      $color-black 48px
+    );
+  background-size: 88px 88px;
+  z-index: 1000;
+
+  img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.image {
+  width: 30%;
+  padding: 0.5rem;
+  position: relative;
+
+  @include respond(tab-prot) {
+    //700px to 900px max-width(59.375em)
+    width: 45%;
+  }
+  @include respond(phone-land) {
+    //400px to 700px max-width(43.75em)
+    width: 75%;
+  }
+  @include respond(phone-prot) {
+    //0px to 400px max-width(28.125em)
+    width: 90%;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  a {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.25rem;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      color: $color-white;
+      background-color: rgba($color-brown, 0.7);
+      font-size: 1.6rem;
+      margin-right: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      transform: scale(1.08);
+    }
+    &:active,
+    &:focus {
+      outline: none;
+      transform: scale(1.05);
+    }
+  }
 }
